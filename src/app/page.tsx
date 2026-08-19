@@ -1,9 +1,49 @@
 import IrpfCalculatorApp from "@/components/IrpfCalculatorApp";
 import { ANIO_FISCAL } from "@/lib/taxData";
+import { FAQ_ENTRIES } from "@/lib/faqData";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/siteConfig";
+
+const webApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "Any",
+  inLanguage: "es-ES",
+  isAccessibleForFree: true,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_ENTRIES.map((entry) => ({
+    "@type": "Question",
+    name: entry.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: entry.answer,
+    },
+  })),
+};
 
 export default function Home() {
   return (
     <div className="flex min-h-full flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webApplicationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <header className="no-print border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
           <div className="flex items-center gap-3">

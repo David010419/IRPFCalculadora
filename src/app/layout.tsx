@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/siteConfig";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,11 +13,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_DESCRIPTION =
-  "Calcula tu IRPF y retenciones de forma rápida y precisa para España. Simulador gratuito por comunidad autónoma con desglose detallado.";
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://irpf-calculator.example.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Calculadora IRPF 2025 | Simulador de IRPF y Retenciones España",
     template: "%s | Calculadora IRPF 2025",
@@ -31,16 +29,23 @@ export const metadata: Metadata = {
     "irpf españa",
     "cuánto pago de irpf",
   ],
-  authors: [{ name: "Calculadora IRPF" }],
+  authors: [{ name: SITE_NAME }],
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Calculadora de IRPF 2025",
     description: SITE_DESCRIPTION,
+    url: "/",
     type: "website",
     locale: "es_ES",
-    siteName: "Calculadora IRPF 2025",
+    siteName: SITE_NAME,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Calculadora de IRPF 2025",
     description: SITE_DESCRIPTION,
   },

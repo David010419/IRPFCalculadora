@@ -32,6 +32,7 @@ export default function IrpfCalculatorApp() {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from browser-only storage after SSR mount, required to avoid a hydration mismatch
         setInput({ ...DEFAULT_INPUT, ...JSON.parse(stored) });
       }
     } catch {
