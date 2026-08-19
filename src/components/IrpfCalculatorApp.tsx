@@ -10,6 +10,7 @@ import { calcularIrpf } from "@/lib/calculator";
 import { buildWhatsappShareUrl } from "@/lib/share";
 import { IrpfInput } from "@/lib/types";
 import EducationSection from "./EducationSection";
+import NativeBanner from "./NativeBanner";
 
 const STORAGE_KEY = "irpf-calculator-input-v1";
 
@@ -106,6 +107,7 @@ export default function IrpfCalculatorApp() {
         </div>
       </div>
 
+      <NativeBanner />
       <EducationSection />
     </div>
   );

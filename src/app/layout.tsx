@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/siteConfig";
 
@@ -68,6 +69,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
+      <Script
+        id="ad-popunder"
+        src="https://pl30926650.effectivecpmnetwork.com/28/71/7c/28717c34751fd1803609e83288edd97f.js"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="ad-socialbar"
+        src="https://pl30926651.effectivecpmnetwork.com/13/17/4c/13174cfc92a583a92256a8bd0591d514.js"
+        strategy="afterInteractive"
+      />
     </html>
   );
 }
