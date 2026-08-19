@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://irpf-calculator.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://irpfcalculadora.com";
 
 export const SITE_NAME = "Calculadora IRPF 2025";
 
