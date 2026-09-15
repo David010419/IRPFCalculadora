@@ -1,6 +1,7 @@
 import {
   ESTATAL_SCALE,
   GASTO_GENERICO,
+  LIMITE_REDUCCION_PLAN_PENSIONES,
   MINIMO_ADICIONAL_MAYOR65,
   MINIMO_ADICIONAL_MENOR3,
   MINIMO_CONTRIBUYENTE_GENERAL,
@@ -83,7 +84,13 @@ export function calcularIrpf(input: IrpfInput): IrpfResult {
     rendimientoNetoPrevio - reduccionTrabajo
   );
 
-  const baseLiquidableGeneral = rendimientoNetoTrabajo;
+  const reduccionPlanPensiones = Math.min(
+    Math.max(0, input.aportacionPlanPensiones),
+    LIMITE_REDUCCION_PLAN_PENSIONES,
+    rendimientoNetoTrabajo
+  );
+
+  const baseLiquidableGeneral = rendimientoNetoTrabajo - reduccionPlanPensiones;
 
   const minimoContribuyente =
     MINIMO_CONTRIBUYENTE_GENERAL +
@@ -144,6 +151,7 @@ export function calcularIrpf(input: IrpfInput): IrpfResult {
     rendimientoNetoPrevio,
     reduccionTrabajo,
     rendimientoNetoTrabajo,
+    reduccionPlanPensiones,
     baseLiquidableGeneral,
     minimoContribuyente,
     minimoDescendientes,

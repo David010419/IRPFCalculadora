@@ -46,34 +46,47 @@ const AUTONOMIC_RATES: Record<string, number[]> = {
 export interface ComunidadAutonoma {
   id: string;
   nombre: string;
+  slug: string;
   foral?: boolean;
 }
 
 export const COMUNIDADES_AUTONOMAS: ComunidadAutonoma[] = [
-  { id: "andalucia", nombre: "Andalucía" },
-  { id: "aragon", nombre: "Aragón" },
-  { id: "asturias", nombre: "Asturias" },
-  { id: "baleares", nombre: "Illes Balears" },
-  { id: "canarias", nombre: "Canarias" },
-  { id: "cantabria", nombre: "Cantabria" },
-  { id: "castillaLaMancha", nombre: "Castilla-La Mancha" },
-  { id: "castillaLeon", nombre: "Castilla y León" },
-  { id: "cataluna", nombre: "Cataluña" },
-  { id: "extremadura", nombre: "Extremadura" },
-  { id: "galicia", nombre: "Galicia" },
-  { id: "madrid", nombre: "Comunidad de Madrid" },
-  { id: "murcia", nombre: "Región de Murcia" },
-  { id: "laRioja", nombre: "La Rioja" },
-  { id: "valencia", nombre: "Comunitat Valenciana" },
-  { id: "paisVasco", nombre: "País Vasco", foral: true },
-  { id: "navarra", nombre: "Navarra", foral: true },
-  { id: "ceuta", nombre: "Ceuta" },
-  { id: "melilla", nombre: "Melilla" },
+  { id: "andalucia", nombre: "Andalucía", slug: "andalucia" },
+  { id: "aragon", nombre: "Aragón", slug: "aragon" },
+  { id: "asturias", nombre: "Asturias", slug: "asturias" },
+  { id: "baleares", nombre: "Illes Balears", slug: "baleares" },
+  { id: "canarias", nombre: "Canarias", slug: "canarias" },
+  { id: "cantabria", nombre: "Cantabria", slug: "cantabria" },
+  { id: "castillaLaMancha", nombre: "Castilla-La Mancha", slug: "castilla-la-mancha" },
+  { id: "castillaLeon", nombre: "Castilla y León", slug: "castilla-y-leon" },
+  { id: "cataluna", nombre: "Cataluña", slug: "cataluna" },
+  { id: "extremadura", nombre: "Extremadura", slug: "extremadura" },
+  { id: "galicia", nombre: "Galicia", slug: "galicia" },
+  { id: "madrid", nombre: "Comunidad de Madrid", slug: "madrid" },
+  { id: "murcia", nombre: "Región de Murcia", slug: "murcia" },
+  { id: "laRioja", nombre: "La Rioja", slug: "la-rioja" },
+  { id: "valencia", nombre: "Comunitat Valenciana", slug: "valencia" },
+  { id: "paisVasco", nombre: "País Vasco", slug: "pais-vasco", foral: true },
+  { id: "navarra", nombre: "Navarra", slug: "navarra", foral: true },
+  { id: "ceuta", nombre: "Ceuta", slug: "ceuta" },
+  { id: "melilla", nombre: "Melilla", slug: "melilla" },
 ];
 
 export function getAutonomicScale(comunidadId: string): TaxBracket[] {
   const rates = AUTONOMIC_RATES[comunidadId] ?? ESTATAL_RATES;
   return ESTATAL_LIMITS.map((limit, i) => ({ limit, rate: rates[i] }));
+}
+
+export function getCombinedScale(comunidadId: string): TaxBracket[] {
+  const rates = AUTONOMIC_RATES[comunidadId] ?? ESTATAL_RATES;
+  return ESTATAL_LIMITS.map((limit, i) => ({
+    limit,
+    rate: ESTATAL_RATES[i] + rates[i],
+  }));
+}
+
+export function getComunidadBySlug(slug: string): ComunidadAutonoma | undefined {
+  return COMUNIDADES_AUTONOMAS.find((c) => c.slug === slug);
 }
 
 // Cotizaciones a la Seguridad Social a cargo del trabajador (estimación 2025)
@@ -93,6 +106,9 @@ export const MINIMO_ADICIONAL_MENOR3 = 2800;
 
 // Reducción por tributación conjunta (pareja/matrimonio no familia monoparental)
 export const REDUCCION_CONJUNTA = 3400;
+
+// Límite de reducción por aportaciones a planes de pensiones individuales (art. 52 LIRPF, vigente desde 2021)
+export const LIMITE_REDUCCION_PLAN_PENSIONES = 1500;
 
 // Reducción por obtención de rendimientos del trabajo (art. 20 LIRPF, vigente desde 2023)
 export const REDUCCION_TRABAJO_MAX = 6498;

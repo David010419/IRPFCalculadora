@@ -1,5 +1,6 @@
 import IrpfCalculatorApp from "@/components/IrpfCalculatorApp";
-import { ANIO_FISCAL } from "@/lib/taxData";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { FAQ_ENTRIES } from "@/lib/faqData";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/siteConfig";
 
@@ -44,35 +45,22 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <header className="no-print border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-lg font-bold text-white">
-              €
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
-                Calculadora de IRPF 2025
-              </h1>
-              <p className="text-sm text-slate-500">
-                Calcula tu IRPF y retenciones de forma rápida y precisa para
-                España
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
+        <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6">
+          <h1 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+            Calculadora de IRPF 2025
+          </h1>
+          <p className="mt-1 text-sm text-slate-500">
+            Calcula tu IRPF y retenciones de forma rápida y precisa para
+            España
+          </p>
+        </div>
         <IrpfCalculatorApp />
       </main>
 
-      <footer className="no-print border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-400">
-        <p>
-          Ejercicio fiscal {ANIO_FISCAL} · Herramienta orientativa, no
-          constituye asesoramiento fiscal.
-        </p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

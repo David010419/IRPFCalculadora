@@ -10,7 +10,9 @@ import { calcularIrpf } from "@/lib/calculator";
 import { buildWhatsappShareUrl } from "@/lib/share";
 import { IrpfInput } from "@/lib/types";
 import EducationSection from "./EducationSection";
-import NativeBanner from "./NativeBanner";
+import AdSlot from "./AdSlot";
+import ComunidadComparadorSection from "./ComunidadComparadorSection";
+import { COMUNIDADES_AUTONOMAS } from "@/lib/taxData";
 
 const STORAGE_KEY = "irpf-calculator-input-v1";
 
@@ -23,6 +25,7 @@ const DEFAULT_INPUT: IrpfInput = {
   hijosMenores3: 0,
   tributacionConjunta: false,
   retenciones: 4500,
+  aportacionPlanPensiones: 0,
 };
 
 export default function IrpfCalculatorApp() {
@@ -30,14 +33,32 @@ export default function IrpfCalculatorApp() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    let next = DEFAULT_INPUT;
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from browser-only storage after SSR mount, required to avoid a hydration mismatch
-        setInput({ ...DEFAULT_INPUT, ...JSON.parse(stored) });
+        next = { ...DEFAULT_INPUT, ...JSON.parse(stored) };
       }
     } catch {
       // localStorage no disponible: se ignora y se usan valores por defecto
+    }
+
+    try {
+      const comunidadParam = new URLSearchParams(window.location.search).get(
+        "comunidad"
+      );
+      if (
+        comunidadParam &&
+        COMUNIDADES_AUTONOMAS.some((c) => c.id === comunidadParam)
+      ) {
+        next = { ...next, comunidadAutonoma: comunidadParam };
+      }
+    } catch {
+      // URL no disponible o malformada: se ignora
+    }
+
+    try {
+      setInput(next);
     } finally {
       setHydrated(true);
     }
@@ -107,7 +128,11 @@ export default function IrpfCalculatorApp() {
         </div>
       </div>
 
-      <NativeBanner />
+      <div className="mt-6">
+        <ComunidadComparadorSection input={input} />
+      </div>
+
+      <AdSlot slot="inContent" />
       <EducationSection />
     </div>
   );

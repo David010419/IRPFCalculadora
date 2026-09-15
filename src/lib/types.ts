@@ -10,6 +10,7 @@ export interface IrpfInput {
   hijosMenores3: number;
   tributacionConjunta: boolean;
   retenciones: number;
+  aportacionPlanPensiones: number;
 }
 
 export interface TaxBracket {
@@ -25,6 +26,7 @@ export interface IrpfResult {
   rendimientoNetoPrevio: number;
   reduccionTrabajo: number;
   rendimientoNetoTrabajo: number;
+  reduccionPlanPensiones: number;
   baseLiquidableGeneral: number;
   minimoContribuyente: number;
   minimoDescendientes: number;

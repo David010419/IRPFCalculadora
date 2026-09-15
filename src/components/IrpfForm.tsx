@@ -171,7 +171,7 @@ export default function IrpfForm({ value, onChange }: IrpfFormProps) {
         </div>
       )}
 
-      <div className={fieldWrapperClass + " mb-0"}>
+      <div className={fieldWrapperClass}>
         <label className={labelClass} htmlFor="retenciones">
           Retenciones ya practicadas (IRPF)
         </label>
@@ -192,6 +192,36 @@ export default function IrpfForm({ value, onChange }: IrpfFormProps) {
         </div>
         <p className={helpClass}>
           Suma de las retenciones de IRPF de tus nóminas durante el año.
+        </p>
+      </div>
+
+      <div className={fieldWrapperClass + " mb-0"}>
+        <label className={labelClass} htmlFor="aportacionPlanPensiones">
+          Aportaciones a plan de pensiones (opcional)
+        </label>
+        <div className="relative">
+          <input
+            id="aportacionPlanPensiones"
+            type="number"
+            inputMode="decimal"
+            min={0}
+            step={50}
+            className={inputClass + " pr-10"}
+            value={
+              Number.isFinite(value.aportacionPlanPensiones)
+                ? value.aportacionPlanPensiones
+                : 0
+            }
+            onChange={(e) =>
+              update("aportacionPlanPensiones", Math.max(0, Number(e.target.value)))
+            }
+          />
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+            €
+          </span>
+        </div>
+        <p className={helpClass}>
+          Reduce tu base imponible hasta un máximo de 1.500 € anuales.
         </p>
       </div>
     </form>

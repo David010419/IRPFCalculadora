@@ -37,8 +37,24 @@ export default function BreakdownTable({ result }: { result: IrpfResult }) {
       indent: true,
     },
     {
-      label: "Rendimiento neto del trabajo (base liquidable)",
+      label: "Rendimiento neto del trabajo",
       value: result.rendimientoNetoTrabajo,
+      bold: true,
+      divider: true,
+    },
+    ...(result.reduccionPlanPensiones > 0
+      ? [
+          {
+            label: "Reducción por aportaciones a plan de pensiones",
+            value: -result.reduccionPlanPensiones,
+            negative: true,
+            indent: true,
+          },
+        ]
+      : []),
+    {
+      label: "Base liquidable general",
+      value: result.baseLiquidableGeneral,
       bold: true,
       divider: true,
     },
