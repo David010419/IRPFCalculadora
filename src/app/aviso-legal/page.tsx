@@ -34,12 +34,12 @@ export default function AvisoLegalPage() {
                 Comercio Electrónico (LSSI-CE), se informa de los siguientes
                 datos: el sitio web {SITE_URL} (en adelante, &quot;el
                 sitio&quot;) es operado por{" "}
-                <strong>[NOMBRE COMPLETO O RAZÓN SOCIAL DEL TITULAR]</strong>,
-                con NIF <strong>[NIF/DNI DEL TITULAR]</strong> y domicilio a
+                <strong>David</strong>,
+                con domicilio a
                 efectos de notificaciones en{" "}
-                <strong>[DIRECCIÓN DEL TITULAR]</strong>. Para cualquier
+                <strong>ESPAÑA</strong>. Para cualquier
                 consulta puede contactarse a través de{" "}
-                <strong>[EMAIL DE CONTACTO]</strong>.
+                <strong>davidcass97@hotmail.com</strong>.
               </p>
               <p className="mt-2 text-xs text-amber-700">
                 Nota: estos datos de identificación deben completarse con la
