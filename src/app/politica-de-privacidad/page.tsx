@@ -31,8 +31,8 @@ export default function PoliticaPrivacidadPage() {
               <p className="mt-2">
                 El responsable del tratamiento de los datos personales
                 relacionados con este sitio ({SITE_URL}) es{" "}
-                <strong>[NOMBRE COMPLETO O RAZÓN SOCIAL DEL TITULAR]</strong>,
-                contactable en <strong>[EMAIL DE CONTACTO]</strong>. Puedes
+                <strong>David</strong>, contactable en{" "}
+                <strong>davidcass97@hotmail.com</strong>. Puedes
                 consultar el resto de datos de identificación en el{" "}
                 <a href="/aviso-legal" className="text-blue-600 hover:underline">
                   aviso legal
@@ -118,7 +118,7 @@ export default function PoliticaPrivacidadPage() {
                 Puedes ejercer tus derechos de acceso, rectificación,
                 supresión, oposición, limitación del tratamiento y
                 portabilidad escribiendo a{" "}
-                <strong>[EMAIL DE CONTACTO]</strong>. También tienes derecho a
+                <strong>davidcass97@hotmail.com</strong>. También tienes derecho a
                 presentar una reclamación ante la Agencia Española de
                 Protección de Datos (
                 <a

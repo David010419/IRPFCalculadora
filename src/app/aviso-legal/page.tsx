@@ -33,18 +33,11 @@ export default function AvisoLegalPage() {
                 julio, de Servicios de la Sociedad de la Información y de
                 Comercio Electrónico (LSSI-CE), se informa de los siguientes
                 datos: el sitio web {SITE_URL} (en adelante, &quot;el
-                sitio&quot;) es operado por{" "}
-                <strong>David</strong>,
-                con domicilio a
-                efectos de notificaciones en{" "}
-                <strong>ESPAÑA</strong>. Para cualquier
-                consulta puede contactarse a través de{" "}
+                sitio&quot;) es operado por <strong>David</strong>, con
+                domicilio a efectos de notificaciones en{" "}
+                <strong>España</strong>. Para cualquier consulta puede
+                contactarse a través de{" "}
                 <strong>davidcass97@hotmail.com</strong>.
-              </p>
-              <p className="mt-2 text-xs text-amber-700">
-                Nota: estos datos de identificación deben completarse con la
-                información real del titular antes de la publicación
-                definitiva del sitio, tal y como exige la LSSI-CE.
               </p>
             </section>
 
