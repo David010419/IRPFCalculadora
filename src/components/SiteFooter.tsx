@@ -4,6 +4,7 @@ import { ANIO_FISCAL } from "@/lib/taxData";
 const FOOTER_LINKS = [
   { href: "/comparador-comunidades-autonomas", label: "Comparador por CC.AA." },
   { href: "/irpf", label: "IRPF por comunidad autónoma" },
+  { href: "/calculadora-jubilacion", label: "Calculadora de jubilación" },
   { href: "/politica-de-privacidad", label: "Política de privacidad" },
   { href: "/politica-de-cookies", label: "Política de cookies" },
   { href: "/aviso-legal", label: "Aviso legal" },

@@ -4,6 +4,7 @@ const NAV_LINKS = [
   { href: "/", label: "Calculadora" },
   { href: "/comparador-comunidades-autonomas", label: "Comparador CC.AA." },
   { href: "/irpf", label: "IRPF por comunidad" },
+  { href: "/calculadora-jubilacion", label: "Jubilación" },
 ];
 
 export default function SiteHeader() {

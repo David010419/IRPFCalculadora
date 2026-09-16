@@ -1,22 +1,15 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Script from "next/script";
 import { ADSENSE_CLIENT_ID, ADSENSE_ENABLED } from "@/lib/adsConfig";
-import { getStoredConsent, subscribeConsent } from "@/lib/consent";
 
+/**
+ * Loads Google AdSense's auto ads script on every page, unconditionally.
+ * Google requires this tag to be present on every page load (including
+ * for its own verification crawler, which never grants our cookie
+ * banner's consent) and handles EEA/UK consent itself via "Privacy &
+ * messaging" in the AdSense dashboard, not via our own consent state.
+ */
 export default function GoogleAdsense() {
-  const [consented, setConsented] = useState(false);
-
-  useEffect(() => {
-    if (getStoredConsent() === "accepted") {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time read of browser-only storage after mount, required to avoid a hydration mismatch
-      setConsented(true);
-    }
-    return subscribeConsent((value) => setConsented(value === "accepted"));
-  }, []);
-
-  if (!ADSENSE_ENABLED || !consented) return null;
+  if (!ADSENSE_ENABLED) return null;
 
   return (
     <Script
