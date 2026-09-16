@@ -35,9 +35,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
   openGraph: {
     title: "Calculadora de IRPF 2025",
     description: SITE_DESCRIPTION,
